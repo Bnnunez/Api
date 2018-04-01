@@ -3,7 +3,8 @@ class PostSerializer < ActiveModel::Serializer
 
 
   def body
-    object.body[0,500]+"..."
+    object.body[0,500]
+    
   end
 
 
