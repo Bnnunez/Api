@@ -10,30 +10,30 @@ Se utilizó información de dos partes:
 
 
 Url del sitio con deploy en heroku:
-https://protected-beach-95857.herokuapp.com
+https://peaceful-reaches-78452.herokuapp.com
 
 Modos de uso:
 
 1) Lista de noticias
-  https://protected-beach-95857.herokuapp.com/posts
+  https://peaceful-reaches-78452.herokuapp.com/posts
 
   **** Admite GET y POST ****
 
 2) Noticia particular
-  https://protected-beach-95857.herokuapp.com/posts/1
+  https://peaceful-reaches-78452.herokuapp.com/posts/1
 
   En este caso la noticia 1.
   **** Admite GET, PATCH, DELETE y PUT ****
 
 3) Comentarios de la noticias
-  https://protected-beach-95857.herokuapp.com/posts/1/comments
+  https://peaceful-reaches-78452.herokuapp.com/posts/1/comments
 
   En este caso, los comentarios de la noticia 1.
   **** Admite GET y POST ****
 
 4) Comentario particular
 
-  https://protected-beach-95857.herokuapp.com/posts/1/comments/3
+  https://peaceful-reaches-78452.herokuapp.com/posts/1/comments/3
   En este caso, el comentario de la noticia 1. Que corresponde al tercero en la base de datos.
 
   **** Admite GET, PATCH, DELETE y PUT ****
