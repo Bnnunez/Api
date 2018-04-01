@@ -3,8 +3,13 @@ class PostSerializer < ActiveModel::Serializer
 
 
   def body
-    object.body[0,500]
-    
+
+    if object.body.length > 500
+      object.body[0,500]+"..."
+    else
+      object.body
+    end
+
   end
 
 
