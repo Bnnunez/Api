@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     @posts = Post.all.order(created_at: :desc)
 
     if @posts
-      render json: @posts, each_serializer: PostSerializer
+      render json: @posts, each_serializer: PostSerializer, status: :ok
 
     else
       render json: {error:error.message}, status: :not_found

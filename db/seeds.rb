@@ -9,6 +9,6 @@
 20.times do
   post1 = Post.create(title: Faker::Book.title, subtitle: Faker::Lorem.sentence(4), body: Faker::Lorem.paragraph(10))
   5.times do
-    Comment.create(post: post1, author:Faker::Science.scientist, body: Faker::Lorem.sentence(4))
+    Comment.create(post: post1, author:Faker::Science.scientist, comment: Faker::Lorem.sentence(4))
   end
 end
