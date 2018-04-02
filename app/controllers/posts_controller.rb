@@ -9,8 +9,6 @@ class PostsController < ApplicationController
     if @posts
       render json: @posts, each_serializer: PostSerializer, status: :ok
 
-    else
-      render json: {error:error.message}, status: :not_found
     end
   end
 
@@ -37,7 +35,7 @@ class PostsController < ApplicationController
     if @post.save
       render json: @post, status: :created
     else
-      render json: {status: 'Error',message: 'Falla, no se guardo correctamente', data: @post.errors }, status: :unprocessable_entity
+      render json: @post.errors, status: :unprocessable_entity
     end
 
   end
@@ -49,7 +47,7 @@ class PostsController < ApplicationController
       if @post.update(post_params)
         render json: @post, status: :ok
       else
-        render json: {status: 'Error',message: 'Falla, no se actualizo correctamente', data: @post.errors }, status: :unprocessable_entity
+        render json: @post.errors, status: :unprocessable_entity
 
       end
     end

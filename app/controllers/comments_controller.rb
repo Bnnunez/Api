@@ -10,8 +10,6 @@ class CommentsController < ApplicationController
 
     if @comments
       render json: @comments, status: :ok
-    else
-      render json: {error:error.message}, status: :not_found
     end
   end
 
@@ -31,7 +29,7 @@ class CommentsController < ApplicationController
     if @comment.save
       render json: @comment, status: :created
     else
-      render json: {status: 'Error',message: 'Falla, no se guardo correctamente', data: @comment.errors }, status: :unprocessable_entity
+      render json: @comment.errors, status: :unprocessable_entity
     end
 
   end
@@ -43,7 +41,7 @@ class CommentsController < ApplicationController
       if @comment.update(comment_params)
         render json: @comment, status: :ok
       else
-        render json: {status: 'Error',message: 'Falla, no se actualizo correctamente', data: @comment.errors }, status: :unprocessable_entity
+        render json: @comment.errors, status: :unprocessable_entity
 
       end
     end
@@ -55,7 +53,7 @@ class CommentsController < ApplicationController
   def destroy
     if @comment
       @comment.destroy
-      
+
       render json: @comment, status: :ok
     end
   end
