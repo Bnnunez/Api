@@ -6,18 +6,18 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all.order(created_at: :desc)
 
-    if @posts
-      render json: @posts, each_serializer: PostSerializer, status: :ok
 
-    end
+    render json: @posts, each_serializer: PostSerializer, status: :ok
+
+
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
-    if @post
-      render json: @post, status: :ok
-    end
+
+    render json: @post, status: :ok
+
   end
   # GET /posts/new
   def new
@@ -43,24 +43,24 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
-    if @post
-      if @post.update(post_params)
-        render json: @post, status: :ok
-      else
-        render json: @post.errors, status: :unprocessable_entity
 
-      end
+    if @post.update(post_params)
+      render json: @post, status: :ok
+    else
+      render json: @post.errors, status: :unprocessable_entity
+
     end
+
 
   end
 
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
-    if @post
-      @post.destroy
-      render json: @post, status: :ok
-    end
+
+    @post.destroy
+    render json: @post, status: :ok
+
   end
 
   private

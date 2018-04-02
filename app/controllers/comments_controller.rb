@@ -7,18 +7,15 @@ class CommentsController < ApplicationController
   # GET /posts.json
   def index
     @comments = @post.comments.order(created_at: :desc)
-
-    if @comments
-      render json: @comments, status: :ok
-    end
+    render json: @comments, status: :ok
+    
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
-    if @comment
-      render json: @comment, status: :ok
-    end
+    render json: @comment, status: :ok
+
   end
 
 
@@ -37,25 +34,24 @@ class CommentsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
-    if @comment
-      if @comment.update(comment_params)
-        render json: @comment, status: :ok
-      else
-        render json: @comment.errors, status: :unprocessable_entity
 
-      end
+    if @comment.update(comment_params)
+      render json: @comment, status: :ok
+    else
+      render json: @comment.errors, status: :unprocessable_entity
+
     end
+
 
   end
 
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
-    if @comment
-      @comment.destroy
 
-      render json: @comment, status: :ok
-    end
+    @comment.destroy
+    render json: @comment, status: :ok
+
   end
 
 
