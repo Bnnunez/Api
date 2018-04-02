@@ -11,4 +11,9 @@ class Post < ApplicationRecord
 	validate :post_id_not_changed
 	validate :created_at_not_changed
 
+	def  as_json(options={})
+		ops={:only => [:id, :title, :subtitle, :body, :created_at]}
+		super(options.merge(ops))
+	end
+
 end

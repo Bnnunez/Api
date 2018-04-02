@@ -18,7 +18,7 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     if @post
-      render json: {status:'Exitoso', message:'Informacion de noticia', data:@post}, status: :ok
+      render json: @post, status: :ok
     end
   end
   # GET /posts/new
@@ -35,7 +35,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      render json: {status: :created,message: 'Guardado Correctamente', data: @post }, status: :created
+      render json: @post, status: :created
     else
       render json: {status: 'Error',message: 'Falla, no se guardo correctamente', data: @post.errors }, status: :unprocessable_entity
     end
@@ -47,7 +47,7 @@ class PostsController < ApplicationController
   def update
     if @post
       if @post.update(post_params)
-        render json: {status: :created,message: 'Actualizado Correctamente', data: @post }, status: :ok
+        render json: @post, status: :ok
       else
         render json: {status: 'Error',message: 'Falla, no se actualizo correctamente', data: @post.errors }, status: :unprocessable_entity
 
@@ -61,7 +61,7 @@ class PostsController < ApplicationController
   def destroy
     if @post
       @post.destroy
-      render json: {status: "Exito",message: 'Borrado Correctamente', data: @post }, status: :ok
+      render json: @post, status: :ok
     end
   end
 

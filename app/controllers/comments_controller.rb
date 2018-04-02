@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     @comments = @post.comments.order(created_at: :desc)
 
     if @comments
-      render json: {status:'Exitoso', message:'Listado de comentarios', noticia:@post.title, noticia_id:@post.id, data:@comments}, status: :ok
+      render json: @comments, status: :ok
     else
       render json: {error:error.message}, status: :not_found
     end
@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
   # GET /posts/1.json
   def show
     if @comment
-      render json: {status:'Exitoso', message:'Informacion de noticia [comentarios]', data:@comment}, status: :ok
+      render json: @comment, status: :ok
     end
   end
 
@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @post.comments.new(comment_params)
     if @comment.save
-      render json: {status: :created,message: 'Guardado Correctamente', data: @comment }, status: :created
+      render json: @comment, status: :created
     else
       render json: {status: 'Error',message: 'Falla, no se guardo correctamente', data: @comment.errors }, status: :unprocessable_entity
     end
@@ -41,7 +41,7 @@ class CommentsController < ApplicationController
   def update
     if @comment
       if @comment.update(comment_params)
-        render json: {status: :created,message: 'Actualizado Correctamente', data: @comment }, status: :ok
+        render json: @comment, status: :ok
       else
         render json: {status: 'Error',message: 'Falla, no se actualizo correctamente', data: @comment.errors }, status: :unprocessable_entity
 
@@ -55,7 +55,8 @@ class CommentsController < ApplicationController
   def destroy
     if @comment
       @comment.destroy
-      render json: {status: "Exito",message: 'Borrado Correctamente', data: @comment }, status: :ok
+      
+      render json: @comment, status: :ok
     end
   end
 
