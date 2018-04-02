@@ -5,7 +5,7 @@ class ApplicationController < ActionController::API
 
   private
   def record_not_found(error)
-    render json: {error:error.message, message:"No se ha podido encontrar el pedido en la base de datos"}, status: :not_found
+    render json: {error:error.message, message1:"No se ha podido encontrar el pedido en la base de datos", message:error.message}, status: :not_found
   end
 
 end
