@@ -8,5 +8,7 @@ class Post < ApplicationRecord
 
 	has_many :comments, :dependent => :destroy
 
+	validate :post_id_not_changed
+	validate :created_at_not_changed
 
 end
