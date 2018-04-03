@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :set_post, only: [:index, :create,:show, :update, :destroy]
-  before_action :set_comment, only: [:show, :update, :destroy]
+  before_action :set_post, only: [:index, :create,:show, :update, :destroy, :replace]
+  before_action :set_comment, only: [:show, :update, :destroy, :replace]
 
 
   # GET /posts
