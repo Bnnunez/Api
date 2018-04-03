@@ -33,6 +33,7 @@ class PostsController < ApplicationController
       end
     else
       render json: { error:"Must have all parameters to PUT"}
+    end
   end
 
   # GET /posts/1/edit

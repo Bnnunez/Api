@@ -55,6 +55,7 @@ class CommentsController < ApplicationController
       end
     else
       render json: { error:"Must have all parameters to PUT"}
+    end
   end
 
   # DELETE /posts/1
