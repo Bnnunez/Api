@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :replace]
 
   # GET /posts
   # GET /posts.json
@@ -22,6 +22,17 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
 
+  end
+
+  def replace
+    if params[:id] && params[:title]&& params[:subtitle]&&params[:body]&&params[:created_at]
+      if @post.update(post_params)
+        render json: @post, status: :ok
+      else
+        render json: @post.errors, status: :unprocessable_entity
+      end
+    else
+      render json: { error:"Must have all parameters to PUT"}
   end
 
   # GET /posts/1/edit

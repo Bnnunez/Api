@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
   def index
     @comments = @post.comments.order(created_at: :desc)
     render json: @comments, status: :ok
-    
+
   end
 
   # GET /posts/1
@@ -43,6 +43,18 @@ class CommentsController < ApplicationController
     end
 
 
+  end
+
+  def replace
+    if params[:id] && params[:comment]&& params[:author]&&params[:created_at]
+      if @comment.update(comment_params)
+        render json: @comment, status: :ok
+      else
+        render json: @comment.errors, status: :unprocessable_entity
+
+      end
+    else
+      render json: { error:"Must have all parameters to PUT"}
   end
 
   # DELETE /posts/1
